@@ -35,9 +35,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			// send input and other state parameters to the animator
 			UpdateAnimator(move);
 
-			if(nameNPC.Contains("Bank")){
-				Debug.Log("Forward aus Move: " + m_ForwardAmount);
-			}
 		}
 
 	}
