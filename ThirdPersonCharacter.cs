@@ -3,7 +3,7 @@ using UnityEngine;
 namespace UnityStandardAssets.Characters.ThirdPerson
 {
 	[RequireComponent(typeof(CapsuleCollider))]
-	public class ThirdPersonCharacter : ThirdPersonNPCBasic, IMovablePlayer, IUpdateAnimatorJump, IUpdateAnimatorCrouch
+	public class ThirdPersonCharacter : ThirdPersonNPC, IMovablePlayer, IUpdateAnimatorJump, IUpdateAnimatorCrouch
 	{
 
 		[SerializeField] float m_JumpPower = 12f;

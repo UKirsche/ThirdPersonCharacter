@@ -4,7 +4,7 @@ using UnityEngine;
 namespace UnityStandardAssets.Characters.ThirdPerson{
 	
 
-	public class ThirdPersonNPCBasic : MonoBehaviour, IUpdateAnimatorMove, IUpdateAnimatorStop {
+	public class ThirdPersonNPC : MonoBehaviour, IUpdateAnimatorMove, IUpdateAnimatorStop {
 
 		[Range(1f, 4f)][SerializeField] protected float m_GravityMultiplier = 2f;
 		[SerializeField] float m_MovingTurnSpeed = 360;

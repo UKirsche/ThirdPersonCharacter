@@ -9,7 +9,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 	/// <summary>
 	/// Third person NPC character. Intefaces werden entsprechend der Animator-Parameter implementiert.
 	/// </summary>
-	public class ThirdPersonNPCCharacter : ThirdPersonNPCBasic, IMovable
+	public class ThirdPersonNPCNormal : ThirdPersonNPC, IMovable
 	{
 
 		public string nameNPC="Normal";
@@ -36,6 +36,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			UpdateAnimator(move);
 
 		}
+
+
 
 	}
 }
