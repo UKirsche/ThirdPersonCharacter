@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 namespace UnityStandardAssets.Characters.ThirdPerson
 {
@@ -20,6 +21,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		}
 
 
+		/// <summary>
+		/// Move the specified move.
+		/// </summary>
+		/// <param name="move">Move.</param>
 		public void Move(Vector3 move)
 		{
 			// convert the world relative moveInput vector into a local-relative
@@ -38,6 +43,25 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		}
 
 
+		/// <summary>
+		/// Talk for n-Seconds, where n is random
+		/// </summary>
+		public void Talk(){
 
+			//stopMovingAnimation
+			Move (Vector3.zero);
+			//Trigger DialogAnimatin
+			m_Animator.SetTrigger("isDialog");
+		}
+
+
+		/// <summary>
+		/// Talk for n-Seconds, where n is random
+		/// </summary>
+		public void StopTalk(){
+
+			//Trigger DialogAnimatin
+			m_Animator.SetBool("isDialog",false);
+		}
 	}
 }
