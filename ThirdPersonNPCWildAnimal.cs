@@ -10,7 +10,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 	/// <summary>
 	/// Third person NPC character. Intefaces werden entsprechend der Animator-Parameter implementiert.
 	/// </summary>
-	public class ThirdPersonNPCWildAnimal : ThirdPersonNPC, ISitable
+	public class ThirdPersonNPCWildAnimal : ThirdPersonNPC, ISitable, IAttackable, IAggressive
 	{
 
 		public string nameNPC="Normal";
@@ -20,27 +20,58 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			base.Start ();
 		}
 
-
+		#region Interfaces for Wild Animal
 		/// <summary>
-		/// Talk for n-Seconds, where n is random
+		/// Attack
 		/// </summary>
-		public void Sit(){
+		public void Attack(){
 
-			//stopMovingAnimation
-			Move (Vector3.zero);
 			//Trigger DialogAnimatin
-			m_Animator.SetTrigger("isSitting");
+			m_Animator.SetTrigger("isAttack");
 		}
 
 		/// <summary>
-		/// Talk for n-Seconds, where n is random
+		/// Stop Attack Animation
+		/// </summary>
+		public void StopAttack(){
+
+			//Trigger DialogAnimatin
+			m_Animator.SetTrigger("isIdle");
+		}
+
+		public void Aggression(){
+
+			//Trigger DialogAnimatin
+			m_Animator.SetTrigger("isAttack");
+		}
+
+		/// <summary>
+		/// Stop Attack Animation
+		/// </summary>
+		public void StopAggression(){
+
+			//Trigger DialogAnimatin
+			m_Animator.SetTrigger("isIdle");
+		}
+
+		/// <summary>
+		/// Play Sit Animation
+		/// </summary>
+		public void Sit(){
+
+			//Trigger DialogAnimatin
+			m_Animator.SetTrigger("isSit");
+		}
+
+		/// <summary>
+		/// Stop Sit Animation
 		/// </summary>
 		public void StopSit(){
 
 			//Trigger DialogAnimatin
-			m_Animator.SetBool("isSitting",false);
+			m_Animator.SetTrigger("isIdle");
 		}
-
+		#endregion
 
 	}
 }

@@ -50,17 +50,17 @@ namespace UnityStandardAssets.Characters.ThirdPerson{
 
 
 		#region Interface-Implementations AnimationController
-		protected void updateAnimatorMove ()
+		public void updateAnimatorMove ()
 		{
 			m_Animator.SetFloat ("Forward", m_ForwardAmount);
 		}
 
-		protected void updateAnimatorStop ()
+		public void updateAnimatorStop ()
 		{
 			m_Animator.SetFloat ("Forward", 0.0f);
 		}
 
-		protected void updateAnimatorSpeed (Vector3 move)
+		public void updateAnimatorSpeed (Vector3 move)
 		{
 			// the anim speed multiplier allows the overall speed of walking/running to be tweaked in the inspector,
 			// which affects the movement speed because of the root motion.
