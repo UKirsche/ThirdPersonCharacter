@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 namespace UnityStandardAssets.Characters.ThirdPerson
@@ -10,7 +10,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 	/// <summary>
 	/// Third person NPC character. Intefaces werden entsprechend der Animator-Parameter implementiert.
 	/// </summary>
-	public class ThirdPersonNPCNormal : ThirdPersonNPC, ITalkable, ISitable
+	public class ThirdPersonNPCWildAnimal : ThirdPersonNPC, ISitable
 	{
 
 		public string nameNPC="Normal";
@@ -19,29 +19,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		{
 			base.Start ();
 		}
-			
 
-
-		/// <summary>
-		/// Talk for n-Seconds, where n is random
-		/// </summary>
-		public void Talk(){
-
-			//stopMovingAnimation
-			Move (Vector3.zero);
-			//Trigger DialogAnimatin
-			m_Animator.SetTrigger("isDialog");
-		}
-
-
-		/// <summary>
-		/// Talk for n-Seconds, where n is random
-		/// </summary>
-		public void StopTalk(){
-
-			//Trigger DialogAnimatin
-			m_Animator.SetBool("isDialog",false);
-		}
 
 		/// <summary>
 		/// Talk for n-Seconds, where n is random

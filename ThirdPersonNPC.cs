@@ -4,7 +4,7 @@ using UnityEngine;
 namespace UnityStandardAssets.Characters.ThirdPerson{
 	
 
-	public class ThirdPersonNPC : MonoBehaviour, IUpdateAnimatorMove, IUpdateAnimatorStop {
+	public class ThirdPersonNPC : MonoBehaviour, IUpdateAnimatorMove, IUpdateAnimatorStop, IMovable {
 
 		[Range(1f, 4f)][SerializeField] protected float m_GravityMultiplier = 2f;
 		[SerializeField] float m_MovingTurnSpeed = 360;
@@ -27,19 +27,40 @@ namespace UnityStandardAssets.Characters.ThirdPerson{
 		}
 			
 
+		/// <summary>
+		/// Move the character by vector3
+		/// </summary>
+		/// <param name="move">Move.</param>
+		public void Move(Vector3 move)
+		{
+			// convert the world relative moveInput vector into a local-relative
+			// turn amount and forward amount required to head in the desired
+			// direction.
+			//if (move.magnitude > 1f) move.Normalize();
+			move = transform.InverseTransformDirection(move);
+			m_TurnAmount = Mathf.Atan2(move.x, move.z);
+			m_ForwardAmount = move.z;
+
+			ApplyExtraTurnRotation();
+
+			// send input and other state parameters to the animator
+			UpdateAnimator(move);
+
+		}
+
 
 		#region Interface-Implementations AnimationController
-		public void updateAnimatorMove ()
+		protected void updateAnimatorMove ()
 		{
 			m_Animator.SetFloat ("Forward", m_ForwardAmount);
 		}
 
-		public void updateAnimatorStop ()
+		protected void updateAnimatorStop ()
 		{
 			m_Animator.SetFloat ("Forward", 0.0f);
 		}
 
-		public void updateAnimatorSpeed (Vector3 move)
+		protected void updateAnimatorSpeed (Vector3 move)
 		{
 			// the anim speed multiplier allows the overall speed of walking/running to be tweaked in the inspector,
 			// which affects the movement speed because of the root motion.
@@ -59,7 +80,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson{
 		/// Updates the animator.
 		/// </summary>
 		/// <param name="move">Move.</param>
-		public void UpdateAnimator(Vector3 move)
+		protected void UpdateAnimator(Vector3 move)
 		{
 			// update the animator parameters
 			updateAnimatorMove ();
