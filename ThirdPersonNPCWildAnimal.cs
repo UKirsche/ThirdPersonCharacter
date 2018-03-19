@@ -13,7 +13,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 	public class ThirdPersonNPCWildAnimal : ThirdPersonNPC, ISitable, IAttackable, IAggressive
 	{
 
-		public string nameNPC="Normal";
+		public string nameNPC="Animal";
 
 		public override void Start ()
 		{
@@ -27,7 +27,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		public void Attack(){
 
 			//Trigger DialogAnimatin
-			m_Animator.SetTrigger("isAttack");
+			m_Animator.SetBool("isAttack", true);
 		}
 
 		/// <summary>
@@ -36,13 +36,13 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		public void StopAttack(){
 
 			//Trigger DialogAnimatin
-			m_Animator.SetTrigger("isIdle");
+			m_Animator.SetBool("isAttack", false);
 		}
 
 		public void Aggression(){
 
 			//Trigger DialogAnimatin
-			m_Animator.SetTrigger("isAttack");
+			m_Animator.SetTrigger("isAggressive");
 		}
 
 		/// <summary>
