@@ -20,22 +20,13 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			base.Start ();
 		}
 
-		#region Interfaces for Wild Animal
-		/// <summary>
-		/// Attack
-		/// </summary>
+		#region Animationen for Wild Animal
 		public void Attack(){
-
-			//Trigger DialogAnimatin
 			m_Animator.SetBool("isAttack", true);
 		}
 
-		/// <summary>
-		/// Stop Attack Animation
-		/// </summary>
 		public void StopAttack(){
 
-			//Trigger DialogAnimatin
 			m_Animator.SetBool("isAttack", false);
 		}
 
@@ -45,30 +36,20 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			m_Animator.SetTrigger("isAggressive");
 		}
 
-		/// <summary>
-		/// Stop Attack Animation
-		/// </summary>
 		public void StopAggression(){
-
-			//Trigger DialogAnimatin
 			m_Animator.SetTrigger("isIdle");
 		}
 
-		/// <summary>
-		/// Play Sit Animation
-		/// </summary>
-		public void Sit(){
+		public void Run(){
+			m_Animator.SetTrigger("isRun");
+		}
 
-			//Trigger DialogAnimatin
+
+		public void Sit(){
 			m_Animator.SetTrigger("isSit");
 		}
 
-		/// <summary>
-		/// Stop Sit Animation
-		/// </summary>
 		public void StopSit(){
-
-			//Trigger DialogAnimatin
 			m_Animator.SetTrigger("isIdle");
 		}
 		#endregion
